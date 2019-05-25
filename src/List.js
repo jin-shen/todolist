@@ -29,14 +29,18 @@ class List extends PureComponent {
         this.refs.content.value = "";
     };
     handleDeleteClick = (id) => {
-        var list = this.state.todoList;
+        let list = this.state.todoList;
         list.splice(id, 1);
-        this.setState({todoList: list})
+        console.log(list);
+        this.setState({todoList: list});
+        this.forceUpdate();
     };
     handleFinishedClick = (id) => {
-        var list = this.state.todoList;
+        let list = this.state.todoList;
         list[id].finished = true;
-        this.setState({todoList: list})
+        console.log(list);
+        this.setState({todoList: list});
+        this.forceUpdate();
     };
 
     render = () => {
@@ -44,6 +48,7 @@ class List extends PureComponent {
             <div>
                 <div className='list-wrapper'>
                     <table border="1">
+                        <tbody>
                         <tr>
                             <th>ID</th>
                             <th>Content</th>
@@ -58,12 +63,12 @@ class List extends PureComponent {
                                         <th>{i.content}</th>
                                         <th>{i.finished ? <p>Yes</p> : <p>No</p>}</th>
                                         <th>
-                                            <button className='finished' onClick={event => this.handleFinishedClick(index)}>
+                                            <button className='finished' onClick={()=>this.handleFinishedClick(index)}>
                                                 mark as finished
                                             </button>
                                         </th>
                                         <th>
-                                            <button className='delete' onClick={event => this.handleDeleteClick(index)}>
+                                            <button className='delete' onClick={()=>this.handleDeleteClick(index)}>
                                                 Delete
                                             </button>
                                         </th>
@@ -71,6 +76,7 @@ class List extends PureComponent {
                                 }
                             )
                         }
+                        </tbody>
                     </table>
                 </div>
                 <div className='input-wrapper'>
