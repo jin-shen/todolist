@@ -51,7 +51,6 @@ class List extends PureComponent {
                         <tbody>
                         <tr>
                             <th>ID</th>
-                            <th>Content</th>
                             <th>Finished</th>
                             <th></th>
                             <th></th>
